@@ -15,7 +15,7 @@ class MealDetailScreen extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 300,
+            height: 250,
             width: double.infinity,
             child: Image.network(
               meal.imageUrl,
@@ -30,7 +30,7 @@ class MealDetailScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: 300,
+            height: 200,
             width: 300,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
