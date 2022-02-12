@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import '../models/category.dart';
-import '../data/dummy_data.dart';
 import '../components/meal_item.dart';
+import '../models/meal.dart';
 
 class MealsListScreen extends StatelessWidget {
-  const MealsListScreen({Key? key}) : super(key: key);
+  final List<Meal> meals;
+
+  // ignore: use_key_in_widget_constructors
+  const MealsListScreen(this.meals);
 
   @override
   Widget build(BuildContext context) {
     final category = ModalRoute.of(context)?.settings.arguments as Category;
 
-    final mealsList = DUMMY_MEALS.where((meal) {
+    final mealsList = meals.where((meal) {
       return meal.categories.contains(category.id);
     }).toList();
 
