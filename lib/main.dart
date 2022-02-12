@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.HOME: (context) => const TabsScreen(),
         AppRoutes.MEALS_LIST: (context) => const MealsListScreen(),
         AppRoutes.MEAL_DETAIL: (context) => const MealDetailScreen(),
-        AppRoutes.SETTINGS: (context) => const SettingsScreen(),
+        AppRoutes.SETTINGS: (context) => SettingsScreen(),
       },
     );
   }
