@@ -6,6 +6,7 @@ import './screens/tabs_screen.dart';
 import './screens/settings_screen.dart';
 import './utils/app_routes.dart';
 import './models/meal.dart';
+import './models/settings.dart';
 import './data/dummy_data.dart';
 
 void main() => runApp(MyApp());
@@ -17,9 +18,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Meal> _availableMeals = DUMMY_MEALS;
+  Settings settings = Settings();
 
   void onSettingsChanged(Settings settings) {
     setState(() {
+      this.settings = settings;
+
       _availableMeals = DUMMY_MEALS.where((meal) {
         final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
         final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
@@ -52,7 +56,8 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.HOME: (context) => const TabsScreen(),
         AppRoutes.MEALS_LIST: (context) => MealsListScreen(_availableMeals),
         AppRoutes.MEAL_DETAIL: (context) => const MealDetailScreen(),
-        AppRoutes.SETTINGS: (context) => SettingsScreen(onSettingsChanged),
+        AppRoutes.SETTINGS: (context) =>
+            SettingsScreen(settings, onSettingsChanged),
       },
     );
   }
